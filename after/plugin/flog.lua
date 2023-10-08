@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>log", vim.cmd.Flog)
+--vim.keymap.set("n", "<leader>log", vim.cmd.Flog)
