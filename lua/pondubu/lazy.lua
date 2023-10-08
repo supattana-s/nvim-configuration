@@ -13,4 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { import = "pondubu.plugins" }
+}, {
+    install = {
+        colorscheme = {"dracula-soft"},
+    },
 })
