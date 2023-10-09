@@ -4,6 +4,7 @@
   "dracula.nvim": { "branch": "main", "commit": "9fe831e685a76e1a1898a694623b33247c4d036c" },
   "lazy.nvim": { "branch": "main", "commit": "62745a7320f48a00ac4f7b0591352608cbc6bcea" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "22677c535fdc11a73da67a186a30e360d8857497" },
+  "nvim-autopairs": { "branch": "master", "commit": "748e72c05495a3d30e88a6ef04b21697019a9aa9" },
   "nvim-cmp": { "branch": "main", "commit": "5dce1b778b85c717f6614e3f4da45e9f19f54435" },
   "nvim-lspconfig": { "branch": "master", "commit": "2b361e043810d5587d9af0787f8ce40da92ec5e9" },
   "nvim-treesitter": { "branch": "master", "commit": "51372f1d4e728539c6243e96c6b657f633e81e29" },
