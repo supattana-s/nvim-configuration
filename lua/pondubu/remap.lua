@@ -36,3 +36,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 --vim.keymap.set("i", "{<CR>", "{<CR><CR>}<up><Tab>")
 --vim.keymap.set("i", "(<CR>", "(<CR><CR>)<up><Tab>")
 --vim.keymap.set("i", "[<CR>", "[<CR><CR>]<up><Tab>")
+--
+--remap for undotree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
