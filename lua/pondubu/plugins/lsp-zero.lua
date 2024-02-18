@@ -11,6 +11,11 @@ return {
                 vim.g.lsp_zero_extend_lspconfig = 0
             end,
         },
+        {
+            'williamboman/mason.nvim',
+            lazy = false,
+            config = true,
+        },
 
         -- Autocompletion
         {
@@ -49,6 +54,7 @@ return {
             event = { 'BufReadPre', 'BufNewFile' },
             dependencies = {
                 { 'hrsh7th/cmp-nvim-lsp' },
+                { 'williamboman/mason-lspconfig.nvim' },
             },
             config = function()
                 -- This is where all the LSP shenanigans will live
@@ -60,6 +66,20 @@ return {
                     -- to learn the available actions
                     lsp_zero.default_keymaps({ buffer = bufnr })
                 end)
+
+                require('mason-lspconfig').setup({
+                    ensure_installed = {
+                        -- your lsp below
+                        'gopls',
+                        'tsserver',
+                        'pyright',
+                        'rust_analyzer',
+                        'lua_ls'
+                    },
+                    handlers = {
+                        lsp_zero.default_setup,
+                    }
+                })
 
                 -- format on save
                 lsp_zero.format_on_save({
@@ -74,12 +94,6 @@ return {
                         ['gopls'] = { 'go' },
                     }
                 })
-
-                -- (Optional) Configure lua language server for neovim
-                local lua_opts = lsp_zero.nvim_lua_ls()
-                require('lspconfig').lua_ls.setup(lua_opts)
-                require('lspconfig').rust_analyzer.setup({})
-                require('lspconfig').gopls.setup({})
             end
         }
     }
