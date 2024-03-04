@@ -70,7 +70,7 @@ return {
                 require('mason-lspconfig').setup({
                     ensure_installed = {
                         -- your lsp below
-                        'gopls',
+                        --'gopls',
                         'tsserver',
                         'pyright',
                         'rust_analyzer',

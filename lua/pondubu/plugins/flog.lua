@@ -1,3 +1,5 @@
 return {
-    'rbong/vim-flog'
+    'rbong/vim-flog',
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" }
 }
