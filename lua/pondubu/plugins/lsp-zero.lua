@@ -70,11 +70,13 @@ return {
                 require('mason-lspconfig').setup({
                     ensure_installed = {
                         -- your lsp below
-                        --'gopls',
+                        'gopls',
                         'tsserver',
                         'pyright',
                         'rust_analyzer',
-                        'lua_ls'
+                        'lua_ls',
+                        'docker_compose_language_service',
+                        'dockerls'
                     },
                     handlers = {
                         lsp_zero.default_setup,
@@ -82,18 +84,21 @@ return {
                 })
 
                 -- format on save
-                lsp_zero.format_on_save({
-                    format_opts = {
-                        async = false,
-                        timeout_ms = 10000,
-                    },
-                    servers = {
-                        ['tsserver'] = { 'javascript', 'typescript' },
-                        ['rust_analyzer'] = { 'rust' },
-                        ['lua_ls'] = { 'lua' },
-                        ['gopls'] = { 'go' },
-                    }
-                })
+
+                -- format on save
+                lsp_zero.buffer_autoformat()
+                -- lsp_zero.format_on_save({
+                --     format_opts = {
+                --         async = false,
+                --         timeout_ms = 10000,
+                --     },
+                --     servers = {
+                --         ['tsserver'] = { 'javascript', 'typescript' },
+                --         ['rust_analyzer'] = { 'rust' },
+                --         ['lua_ls'] = { 'lua' },
+                --         ['gopls'] = { 'go' },
+                --     }
+                -- })
             end
         }
     }
