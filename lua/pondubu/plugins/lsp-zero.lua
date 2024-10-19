@@ -2,7 +2,7 @@ return {
     {
         {
             'VonHeikemen/lsp-zero.nvim',
-            branch = 'v3.x',
+            branch = 'v4.x',
             lazy = true,
             config = false,
             init = function()
@@ -38,10 +38,11 @@ return {
                     mapping = cmp.mapping.preset.insert({
                         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                         ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                        -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                        ["<CR>"] = cmp.mapping.confirm({ select = true }),
                         ["<C-Space>"] = cmp.mapping.complete(),
                         ['<Tab>'] = cmp_action.tab_complete(),
-                        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+                        -- ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
                     })
                 })
             end
@@ -71,15 +72,20 @@ return {
                     ensure_installed = {
                         -- your lsp below
                         'gopls',
-                        'tsserver',
+                        'ts_ls',
                         'pyright',
                         'rust_analyzer',
                         'lua_ls',
                         'docker_compose_language_service',
-                        'dockerls'
+                        'dockerls',
+                        -- 'tailwindcss-language-server',
+                        -- 'vscode-eslint-language-server'
                     },
                     handlers = {
-                        lsp_zero.default_setup,
+                        -- lsp_zero.default_setup,
+                        function(server_name)
+                            require('lspconfig')[server_name].setup({})
+                        end,
                     }
                 })
 
