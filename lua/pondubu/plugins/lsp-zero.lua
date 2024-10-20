@@ -34,6 +34,9 @@ return {
                 local cmp_action = lsp_zero.cmp_action()
 
                 cmp.setup({
+                    sources = {
+                        { name = 'nvim_lsp' }
+                    },
                     formatting = lsp_zero.cmp_format(),
                     mapping = cmp.mapping.preset.insert({
                         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -60,13 +63,30 @@ return {
             config = function()
                 -- This is where all the LSP shenanigans will live
                 local lsp_zero = require('lsp-zero')
-                lsp_zero.extend_lspconfig()
 
-                lsp_zero.on_attach(function(client, bufnr)
+                -- from lsp-zero v3.x
+                -- lsp_zero.extend_lspconfig()
+                --
+                -- lsp_zero.on_attach(function(client, bufnr)
+                --     -- see :help lsp-zero-keybindings
+                --     -- to learn the available actions
+                --     lsp_zero.default_keymaps({ buffer = bufnr })
+                -- end)
+                --
+                -- migrate to lsp-zero v4.x below
+
+                local lsp_attach = function(client, bufnr)
                     -- see :help lsp-zero-keybindings
                     -- to learn the available actions
                     lsp_zero.default_keymaps({ buffer = bufnr })
-                end)
+                end
+
+                lsp_zero.extend_lspconfig({
+                    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                    lsp_attach = lsp_attach,
+                    float_border = 'rounded',
+                    sign_text = true,
+                })
 
                 require('mason-lspconfig').setup({
                     ensure_installed = {
