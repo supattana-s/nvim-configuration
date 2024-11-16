@@ -98,6 +98,7 @@ return {
                         'lua_ls',
                         'docker_compose_language_service',
                         'dockerls',
+                        'clangd'
                         -- 'tailwindcss-language-server',
                         -- 'vscode-eslint-language-server'
                     },
